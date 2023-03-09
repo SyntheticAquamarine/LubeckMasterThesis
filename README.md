@@ -1,0 +1,2 @@
+# LubeckMasterThesis
+Praca magisterska
