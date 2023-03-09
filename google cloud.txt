@@ -1,0 +1,35 @@
+backety - dyski dostępne niezależnie od systemu
+bucket?
+sieć wewnętrzna 10. 
+178
+192.168
+Nie można się na nie podłączyć zdalnie - jest to adres lokalny
+
+sudo (superuser do) apt-get (zaciąganie bibliotek linux) update (sprawdza i updatuje)/install git
+sudo apt-get xyz
+colorscheme torte
+
+GNU Wget is a computer program that retrieves content from web servers. 
+
+wget http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv -O earthques.csv - 
+pobiera plik earthquakes.csv ze strony
+internetowej
+
+bash install_missing.sh - wykonuje plik install_missing.sh
+python3 - wykonuje kod pythonowy
+
+ls -lah - daje listę modyfikacji
+
+
+uprawnienia w cloudzie są przydawane na poziomie api
+
+
+
+
+
+Select name, gender, SUM(number) as number_of
+from `bigquery-public-data.usa_names.usa_1910_2013`
+where gender = "M"
+group by name, gender
+order by number_of desc
+#limit 10

@@ -1,0 +1,35 @@
+pwd - w gicie wyświetla katalog
+
+git diff -różnice pomiędzy plikami
+
+git clone - klonuje repozytorium
+
+git log (--oneline - daje log samych opisów commitów) (--graph)  (--decorate # nie wiem, co robi)
+
+git diff IDcommitu -stary IDcommitu2 - nowy
+
+git show <commit_id> - wykonuje diffa porównując danego commita z jego rodzicem
+
+Git branch –d <branch> - usuwa gałąź
+
+ls -lah
+
+git checkout IDcommita -powraca do danej wersji
+
+git checkout -master - powraca do najnowszego commita
+
+ctr insert - kopia
+
+shift insert - wklej
+
+jak wyjść z vima
+escape :wq
+
+git diff --staged (zmiany w staging area)
+
+
+git branch - wyświetla informacje o gałęzi na której jesteśmy
+
+git branch <nazwa> - tworzy nową gałąź
+
+git checkout - przechodzi na gałąź
