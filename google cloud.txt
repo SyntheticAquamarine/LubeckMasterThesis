@@ -22,14 +22,3 @@ ls -lah - daje listę modyfikacji
 
 
 uprawnienia w cloudzie są przydawane na poziomie api
-
-
-
-
-
-Select name, gender, SUM(number) as number_of
-from `bigquery-public-data.usa_names.usa_1910_2013`
-where gender = "M"
-group by name, gender
-order by number_of desc
-#limit 10
