@@ -1,5 +1,9 @@
 Do zrobienia :
-- W feature elimination wypisać, ile features jest obecnie branych pod uwagę
-- W feature elimination wykazać, które z listy features są brane pod uwagę (obecnie wypisuje po prostu wszystkie feature_names)
-- Zmienić wartości na %
+- W feature elimination wypisać, ile features jest obecnie branych pod uwagę --gotowe
+- W feature elimination wykazać, które z listy features są brane pod uwagę (obecnie wypisuje po prostu wszystkie feature_names) --gotowe?
+- Zmienić wartości na % --gotowe
 - Zmienić concinue na continue --gotowe
+
+
+
+- W feature extraction jest problem z fft_sum - prawdopodobnie przekazanie fft_sum odbywa się źle (pojawia się błąd mówiący, że dla zmiennej jest 0 dimensions) Czy w tym wypadku próbowało by przyporządkować na raz dwie wartości z racji podwójnego wykonania się pętli?
