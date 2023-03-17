@@ -1,0 +1,5 @@
+Do zrobienia :
+- W feature elimination wypisać, ile features jest obecnie branych pod uwagę
+- W feature elimination wykazać, które z listy features są brane pod uwagę (obecnie wypisuje po prostu wszystkie feature_names)
+- Zmienić wartości na %
+- Zmienić concinue na continue --gotowe
