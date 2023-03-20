@@ -3,7 +3,18 @@ Do zrobienia :
 - W feature elimination wykazać, które z listy features są brane pod uwagę (obecnie wypisuje po prostu wszystkie feature_names) --gotowe?
 - Zmienić wartości na % --gotowe
 - Zmienić concinue na continue --gotowe
-
-
-
 - W feature extraction jest problem z fft_sum - prawdopodobnie przekazanie fft_sum odbywa się źle (pojawia się błąd mówiący, że dla zmiennej jest 0 dimensions) Czy w tym wypadku próbowało by przyporządkować na raz dwie wartości z racji podwójnego wykonania się pętli?
+--gotowe
+
+
+
+
+- Błąd w pisowni dla uruchomienia funkcji feature extraction --gotowe
+- Stworzyć w końcu to FFT dla argmaxa
+- Dodać linię przerwy pomiędzy poszczególnymi testami w RSE --gotowe
+
+
+
+
+
+- jest problem z fft - trzeba prawdopodobnie wykluczyć składowe mniejsze od 0
