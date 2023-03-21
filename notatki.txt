@@ -18,3 +18,7 @@ Do zrobienia :
 
 
 - jest problem z fft - trzeba prawdopodobnie wykluczyć składowe mniejsze od 0
+
+
+- num_chunks = extracted_data.shape[0]//chunk_size - tutaj właściwie trzeba wywalić chunk size, bo jest raczej zbędne
+shape[0] oddaje raczej obserwacje
