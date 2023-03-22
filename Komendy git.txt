@@ -1,5 +1,7 @@
 pwd - w gicie wyświetla katalog
 
+git commit -am - jednocześnie wykonuje git add i git commit message, wymaga to jednak wykorzystania plików, które już wcześniej były scomitowane
+
 git diff -różnice pomiędzy plikami
 
 git clone - klonuje repozytorium
@@ -26,10 +28,16 @@ jak wyjść z vima
 escape :wq
 
 git diff --staged (zmiany w staging area)
-
+git diff <branch name> wyświetla zmiany w porównaniu z branchem
 
 git branch - wyświetla informacje o gałęzi na której jesteśmy
 
 git branch <nazwa> - tworzy nową gałąź
 
 git checkout - przechodzi na gałąź
+
+git checkout -b - tworzy nową gałąź
+
+clear - czyści konsolę
+
+git push -u origin <branch name> przy każdym nowym, branchy ustalamy, jak nazwywa się odpowiadający branch w repozytorium
