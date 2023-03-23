@@ -1,0 +1,6 @@
+Fourier transform
+
+https://stackoverflow.com/questions/74614941/how-can-i-take-the-fourier-transform-using-np-fft-fft-function
+
+
+https://www.google.com/search?q=what+does+trapz+do&oq=what+does+trapz+do&aqs=chrome..69i57.3393j0j4&sourceid=chrome&ie=UTF-8
