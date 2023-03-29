@@ -1,0 +1,13 @@
+1. Wstęp - wyjaśnienie problematyki pracy, dlaczego akurat klasyfikacja oddychania?
+	cel pracy
+	Struktura pracy
+
+2. Pattern recognition chain
+	2.1 Data acquisition
+	2.2 Pre - processing
+	2.3 Segmentation
+	2.4 Feature Extraction
+	2.5 Classification.
+
+3. Implementacja rozwiązań
+
