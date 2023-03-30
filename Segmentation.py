@@ -64,10 +64,16 @@ def file_processing(T, WindowSize, NumOfSensors):
     for path in fullPath:
         #print(path)
         df_local = pd.read_csv(path, sep = ',', encoding = 'UTF-8', usecols=fields)
+        
+        if re.findall('(\/23\/B)', path):
+            print('23B') #41 row (41 row correct value)
+        if re.findall('(\/43\/R)', path):
+            print('23B')    #81 (81 row)
+        
         df_local = df_local.interpolate()
         if T != 'N':
             df_local = df_local[df_local.index % T == 0] #Set to 2000 as 1 second is 20 observations
-        match = re.findall("/B/Csv",path)
+        match = re.findall("\/B\/Csv",path)
         
         df_segmented = segmentation(df_local, WindowSize)
         

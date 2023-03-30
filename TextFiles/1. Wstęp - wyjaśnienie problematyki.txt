@@ -2,12 +2,21 @@
 	cel pracy
 	Struktura pracy
 
-2. Pattern recognition chain
-	2.1 Data acquisition
-	2.2 Pre - processing
-	2.3 Segmentation
-	2.4 Feature Extraction
-	2.5 Classification.
+2. Fundamental concepts
+	2.1 Machine learning uses
+	2.1 Supervised, unsupervised, semi - supervised machine learning
+	2.2 Pattern recognition chain
+	 Data acquisition
+	 Pre - processing
+	 Segmentation
+	 Feature Extraction
+	 Classification. - short overwiev of common classification methods, along with a more detailed description of methods used in the thesis
+	2.3 Artificial Neural Networks
+	 Understanding Neural networks
+	 Architectures
+	 	Convoluted Neural Networks
+	 	Deep neural networks
+3. Methodology
 
-3. Implementacja rozwiązań
+4. Conclusion
 

@@ -6,9 +6,9 @@ from scipy.fft import fft
 import os
 
 
-global num_features
-num_features = 10
-def feature_extraction(data):
+#global num_features
+#num_features = 10
+def feature_extraction(data, num_features):
         freq = 100
         mean_array = np.zeros((len(data),2), dtype = float)
         median_array = np.zeros((len(data),2), dtype = float)
@@ -130,17 +130,17 @@ def feature_extraction(data):
 
 #segmented_dir = './CreatedFiles/Segmentation/'
 
-def extraction_function(segmented_dir):
+def extraction_function(segmented_dir, num_features):
     for filename in os.listdir(segmented_dir):
         if filename.endswith('_B.npy'):
             file_loaded = np.load(segmented_dir + filename)
-            extracted = feature_extraction(file_loaded)
+            extracted = feature_extraction(file_loaded, num_features)
             
             location_FE_B = f'./CreatedFiles/Extracted_Features/{filename}'
             np.save(location_FE_B, extracted)
         elif filename.endswith('_R.npy'):
             file_loaded = np.load(segmented_dir + filename)
-            extracted = feature_extraction(file_loaded)
+            extracted = feature_extraction(file_loaded, num_features)
             
             location_FE_R = f'./CreatedFiles/Extracted_Features/{filename}'
             np.save(location_FE_R, extracted)
