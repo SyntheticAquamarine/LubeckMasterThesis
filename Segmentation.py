@@ -67,8 +67,10 @@ def file_processing(T, WindowSize, NumOfSensors):
         
         if re.findall('(\/23\/B)', path):
             print('23B') #41 row (41 row correct value)
-        if re.findall('(\/43\/R)', path):
+        elif re.findall('(\/43\/R)', path):
             print('23B')    #81 (81 row)
+
+        
         
         df_local = df_local.interpolate()
         if T != 'N':
@@ -85,13 +87,11 @@ def file_processing(T, WindowSize, NumOfSensors):
 
         if bool(match) == True:
             location_B = f'./CreatedFiles/Segmentation/{neo[0]}_B.npy'
-            #print(location_B)
-            np.save(location_B, df_segmented)
+            #np.save(location_B, df_segmented)
 
         else:
             location_R = f'./CreatedFiles/Segmentation/{neo[0]}_R.npy'
-            #print(location_R)
-            np.save(location_R, df_segmented)
+            #np.save(location_R, df_segmented)
 
         print(f"Imported file number: {i}, from files total: {files_total}, and that is {i*100/files_total:.2f}%")
         i+=1 
