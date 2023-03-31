@@ -50,3 +50,9 @@ multi dimensional array indexing
 
 
 dx1 = np.logical_and(sensor_1_freq >= 0, sensor_1_freq <= freq)
+
+
+Plot power spectrum!
+
+
+subject dependent and independent classification

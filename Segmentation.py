@@ -65,33 +65,31 @@ def file_processing(T, WindowSize, NumOfSensors):
         #print(path)
         df_local = pd.read_csv(path, sep = ',', encoding = 'UTF-8', usecols=fields)
         
-        if re.findall('(\/23\/B)', path):
-            print('23B') #41 row (41 row correct value)
-        elif re.findall('(\/43\/R)', path):
-            print('23B')    #81 (81 row)
+        print(df_local.shape)
 
-        
-        
         df_local = df_local.interpolate()
+        print(df_local.shape)
+        df_local.dropna(thresh = 2, inplace = True)
+        print(df_local.shape)
+        
+        
+        print(path)
+        print(f'Number of blank spaces for the position: \n {df_local.isna().sum()}')
         if T != 'N':
             df_local = df_local[df_local.index % T == 0] #Set to 2000 as 1 second is 20 observations
         match = re.findall("\/B\/Csv",path)
         
         df_segmented = segmentation(df_local, WindowSize)
-        
-        #print(df_segmented)
-        #print(df_segmented.shape)
-        
+              
         neo = re.findall('\/([\d]{1,2})\/', path)
-        
 
         if bool(match) == True:
             location_B = f'./CreatedFiles/Segmentation/{neo[0]}_B.npy'
-            #np.save(location_B, df_segmented)
+            np.save(location_B, df_segmented)
 
         else:
             location_R = f'./CreatedFiles/Segmentation/{neo[0]}_R.npy'
-            #np.save(location_R, df_segmented)
+            np.save(location_R, df_segmented)
 
         print(f"Imported file number: {i}, from files total: {files_total}, and that is {i*100/files_total:.2f}%")
         i+=1 
