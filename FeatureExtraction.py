@@ -25,94 +25,44 @@ def feature_extraction(data, num_features):
                 min_val_array[i] = np.min(data[i], axis=0)
                 max_val_array[i] = np.max(data[i], axis=0)
                 sum_val_array[i] = np.sum(data[i], axis=0)/freq
-                
                 kurtosis_array[i] = scipy.stats.kurtosis(data[i], axis=0)       
                 skewness_array[i] = scipy.stats.skew(data[i], axis=0)
 
 
-        fft_sums = np.zeros((len(data),2), dtype = float)
-
-        fft_freqs = np.zeros((len(data),2), dtype = float) ###Czy tu aby na pewno powinien być dloat, a nie liczba urojona
-
-        #Flattening the array to shape (a*b, c), where c is the number of sensors
-        flat_arr = data.reshape(len(data)*len(data[1]), len(data[0][1]))
-
+        fft_sums = np.zeros((len(data), data.shape[2]), dtype = float)
+        fft_freqs = np.zeros((len(data), data.shape[2]), dtype = float)
         
-        k = 0
-        for k in range(len(data)):
-                
-                chunk = flat_arr[k * len(data[1]) : (k + 1) * len(data[1]), ]
-                
-                sensor_1 = chunk[:,0]
-                sensor_2 = chunk[:,1]
-                
-                
-                sp1 = np.fft.fft(sensor_1)
-                ps1 = np.abs(sp1)**2
-                sp2 = np.fft.fft(sensor_2)
-                ps2 = np.abs(sp2)**2
-                
-                
-                # Define the frequency range of interest
-                sensor_1_freq = np.fft.fftfreq(len(chunk), 1/freq)
-                
-                idx1 = np.logical_and(sensor_1_freq >= 0, sensor_1_freq <= freq)
+        for depth in range(data.shape[0]):
+                for sensor in range(data.shape[2]):
 
-                # Integrate the power spectrum over the frequency range of interest
-                area1 = trapz(ps1[idx1], sensor_1_freq[idx1])
-
-
-                # Define the frequency range of interest
-                sensor_2_freq = np.fft.fftfreq(len(chunk), 1/freq)
-                
-                idx2 = np.logical_and(sensor_2_freq >= 0, sensor_2_freq <= freq)
-
-                # Integrate the power spectrum over the frequency range of interest
-                area2 = trapz(ps2[idx1], sensor_2_freq[idx1])
-
-
-                fft_sums[k] = [area1, area2]
-                
-                
-                argmax_ind_1 = np.arange(len(sp1))
-                argmax_list_1 = argmax_ind_1[np.argsort(-np.abs(sp1))]
-                
-                max_power_frequency_1 = argmax_list_1[0] * (freq / len(chunk))
-                
-                
-                argmax_ind_2 = np.arange(len(sp2))
-                argmax_list_2 = argmax_ind_2[np.argsort(-np.abs(sp2))]
-                
-                
-                array_len_1 = len(argmax_list_1)
-                
-                for ind_1 in range(array_len_1):
+                        sp = np.fft.fft(data[depth, : , sensor])
+                        ps = np.abs(sp)**2
                         
-                        if (argmax_list_1[ind_1] * (freq / len(chunk)) <= 1):
+                        #calculating the area under the curve
+                        data_freq = np.fft.fftfreq(data.shape[1], 1/freq)
+                        #end_freq = np.array([frqc for frqc in data_freq if frqc > 0])
+                        idx = np.logical_and(data_freq >= 0, data_freq <= freq)
+                        area = trapz(ps[idx], data_freq[idx])
+                        fft_sums[depth, sensor] = area
+                        
+                        #calculation of the greatest frequencies
+                        argmax_ind = np.arange(len(sp))
+                        argmax_list = argmax_ind[np.argsort(-ps)]
+                        max_power_frequency = argmax_list[0] * (freq / data.shape[1])
+                
+                        array_len = len(argmax_list)
+                
+                        for ind in range(array_len):
+                        
+                                if (argmax_list[ind] * (freq / data.shape[1]) <= 1):
+                                        
+                                        continue
                                 
-                                continue
-                        
-                        elif (argmax_list_1[ind_1] * (freq / len(chunk)) > 1):
-                                max_power_frequency_1 = argmax_list_1[ind_1] * (freq / len(chunk))
+                                elif (argmax_list[ind] * (freq / data.shape[1]) > 1):
+                                        max_power_frequency = argmax_list[ind] * (freq / data.shape[1])
 
-                                break
-                        
-                array_len_2 = len(argmax_list_2)
-
-                for ind_2 in range(array_len_2):
-                        
-                        if (argmax_list_2[ind_2] * (freq / len(chunk)) <= 1):
-                                
-                                continue
-                        
-                        elif (argmax_list_2[ind_2] * (freq / len(chunk)) > 1):
-                                max_power_frequency_2 = argmax_list_2[ind_2] * (freq / len(chunk))
-        
-                                break
-           
-        
-        
-                fft_freqs[k] = [max_power_frequency_1, max_power_frequency_2]
+                                        break                        
+                        fft_freqs[depth, sensor] = max_power_frequency
 
 
         global feature_names
