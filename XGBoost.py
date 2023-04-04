@@ -30,7 +30,7 @@ def xgboost():
     print("Recall: %.2f%%" % (recall * 100.0))
 
     with open(f'{classification_folder}XGBoost.txt', 'w') as f:
-            f.write('Random Forest without cross validation \
+            f.write('XGBoost without cross validation \
                 Accuracy: %.2f%% \
                     Precision: %.2f%% \
                         Recall: %.2f%%' % (acc * 100.0, precision * 100.0, recall * 100.0))

@@ -74,9 +74,7 @@ def feature_extraction(data, num_features):
         features = np.concatenate((mean_array, median_array, std_array, min_val_array, max_val_array, sum_val_array, kurtosis_array, skewness_array, fft_sums, fft_freqs), axis = 1)
         
         return features
-    
-    
-    
+
 
 #segmented_dir = './CreatedFiles/Segmentation/'
 
