@@ -94,8 +94,8 @@ def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_
             precision = statistics[8]
             recall = statistics[9]
             feature_names = statistics[10]
-            f.write(f'\n Number of features:{i}, accuracy: {accuracy}, precision: {precision}, recall: {recall},\
-                \n feature names {feature_names}, \n {selected}')
+            f.write(f'Number of features:{i}, accuracy: {accuracy}, precision: {precision}, recall: {recall},\
+                \n feature names {feature_names}, \n {selected} \n\n\n')
 
     
     #location_FE_R = f'./CreatedFiles/Labels/{label_file}_label.npy'
@@ -106,7 +106,7 @@ def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_
         np.save(f'{selected_feature_folder}X_train.npy', End_features[0])
         np.save(f'{selected_feature_folder}X_test.npy', End_features[1])
         np.save(f'{selected_feature_folder}y_train.npy', End_features[2])
-        np.save(f'{selected_feature_folder}X_test.npy', End_features[3])
+        np.save(f'{selected_feature_folder}y_test.npy', End_features[3])
         
     
     
