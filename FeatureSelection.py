@@ -1,10 +1,10 @@
 from sklearn.feature_selection import RFE
-from sklearn.linear_model import LogisticRegression
+#from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
-from sklearn.svm import SVC
-from sklearn.model_selection import cross_val_score
-from sklearn.datasets import make_classification
+#from sklearn.svm import SVC
+#from sklearn.model_selection import cross_val_score
+#from sklearn.datasets import make_classification
 from sklearn.feature_selection import RFE
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -48,9 +48,7 @@ def feature_elimination(i, shuffled_dir, feature_names):
     le = LabelEncoder()
     y = le.fit_transform(y)
     # Use the selected features to train and evaluate the classifier
-    global X_selected
     X_selected = X[:, selected_features]
-    global X_train, X_test, y_train, y_test
     X_train, X_test, y_train, y_test = train_test_split(X_selected, y, test_size=0.3, random_state=42)
 
     
@@ -74,7 +72,7 @@ def feature_elimination(i, shuffled_dir, feature_names):
     print("Recall: %.4f%%" % (recall * 100.0))
     print("Mean Absolute Error:", mae, end = '\n')
     
-    return X_train, X_test, y_train, y_test, X_selected, X, y, accuracy_stat, precision_stat, recall_stat, names_selected_features
+    return X_train, X_test, y_train, y_test, X_selected, y, accuracy_stat, precision_stat, recall_stat, names_selected_features, selected_features_indices
     
     
     
@@ -89,11 +87,11 @@ def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_
         
         with open(feature_description_folder,'a') as f:
             #features = f'number_of_features: {i}'
-            selected = statistics[4]
-            accuracy = statistics[7]
-            precision = statistics[8]
-            recall = statistics[9]
-            feature_names = statistics[10]
+            selected = statistics[10]
+            accuracy = statistics[6]
+            precision = statistics[7]
+            recall = statistics[8]
+            feature_names = statistics[9]
             f.write(f'Number of features:{i}, accuracy: {accuracy}, precision: {precision}, recall: {recall},\
                 \n feature names {feature_names}, \n {selected} \n\n\n')
 
@@ -107,6 +105,8 @@ def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_
         np.save(f'{selected_feature_folder}X_test.npy', End_features[1])
         np.save(f'{selected_feature_folder}y_train.npy', End_features[2])
         np.save(f'{selected_feature_folder}y_test.npy', End_features[3])
+        np.save(f'{selected_feature_folder}X_selected.npy', End_features[4])
+        np.save(f'{selected_feature_folder}y_selected.npy', End_features[5])
         
     
     
