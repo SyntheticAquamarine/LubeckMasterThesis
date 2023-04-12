@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def cvrfv(n_folds):
+def cvrfc(n_folds):
 
     classification_folder = './CreatedFiles/With_Cross_Validation/'
     X = np.load('./CreatedFiles/Selected_Features/X_selected.npy')
@@ -50,7 +50,7 @@ def cvrfv(n_folds):
 
 
     with open(f'{classification_folder}CVrfc.txt', 'w') as f:
-        f.write('Random Forest without cross validation \
+        f.write('Random Forest with cross validation \
             Accuracy: %.2f%% \
                 Precision: %.2f%% \
                     Recall: %.2f%%' % (np.mean(acc_scores_RFC) * 100.0, np.mean(precision_scores_RFC) * 100.0, np.mean(recall_scores_RFC) * 100.0))

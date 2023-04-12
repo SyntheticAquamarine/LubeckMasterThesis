@@ -96,17 +96,17 @@ def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_
                 \n feature names {feature_names}, \n {selected} \n\n\n')
 
     
-    #location_FE_R = f'./CreatedFiles/Labels/{label_file}_label.npy'
-    #np.save(location_FE_R, labels)
-    def feature_selection(shuffled_dir, feature_names, selected_feature_folder):
-        Feature_no_chosen = int(input("How many features are to be selected?"))
-        End_features = feature_elimination(Feature_no_chosen, shuffled_dir, feature_names)
-        np.save(f'{selected_feature_folder}X_train.npy', End_features[0])
-        np.save(f'{selected_feature_folder}X_test.npy', End_features[1])
-        np.save(f'{selected_feature_folder}y_train.npy', End_features[2])
-        np.save(f'{selected_feature_folder}y_test.npy', End_features[3])
-        np.save(f'{selected_feature_folder}X_selected.npy', End_features[4])
-        np.save(f'{selected_feature_folder}y_selected.npy', End_features[5])
+#location_FE_R = f'./CreatedFiles/Labels/{label_file}_label.npy'
+#np.save(location_FE_R, labels)
+def feature_selection(shuffled_dir, feature_names, selected_feature_folder):
+    Feature_no_chosen = int(input("How many features are to be selected?"))
+    End_features = feature_elimination(Feature_no_chosen, shuffled_dir, feature_names)
+    np.save(f'{selected_feature_folder}X_train.npy', End_features[0])
+    np.save(f'{selected_feature_folder}X_test.npy', End_features[1])
+    np.save(f'{selected_feature_folder}y_train.npy', End_features[2])
+    np.save(f'{selected_feature_folder}y_test.npy', End_features[3])
+    np.save(f'{selected_feature_folder}X_selected.npy', End_features[4])
+    np.save(f'{selected_feature_folder}y_selected.npy', End_features[5])
         
     
     

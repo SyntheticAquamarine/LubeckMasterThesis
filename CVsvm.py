@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def CVsvm(n_folds):
+def cvsvm(n_folds):
     classification_folder = './CreatedFiles/With_Cross_Validation/'
     X = np.load('./CreatedFiles/Selected_Features/X_selected.npy')
     y = np.load('./CreatedFiles/Sele/cted_Features/y_selected.npy')
