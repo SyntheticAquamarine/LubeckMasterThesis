@@ -6,6 +6,15 @@ import os
 def labeling(data_dir):
     for filename in os.listdir(data_dir):
         
+        file_loaded = np.load(data_dir + filename)
+        labels = np.zeros(file_loaded.shape[0])
+        label_file = re.sub('(\.npy)','',filename)
+            
+        location_FE_B = f'./CreatedFiles/Labels/{label_file}_label.npy'
+        np.save(location_FE_B, labels)
+        
+        
+        '''
         # brzuch 0
         if filename.endswith('_B.npy'):
             
@@ -15,6 +24,9 @@ def labeling(data_dir):
             
             location_FE_B = f'./CreatedFiles/Labels/{label_file}_label.npy'
             np.save(location_FE_B, labels)
+        
+        
+        
         
         # plecy 1    
         elif filename.endswith('_R.npy'):
@@ -28,3 +40,4 @@ def labeling(data_dir):
         else:
             print('Filename error')
             break
+        '''

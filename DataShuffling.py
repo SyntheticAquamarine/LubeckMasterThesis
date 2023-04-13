@@ -16,4 +16,7 @@ def data_shuffler(merged_dir, shuffled_data):
     np.save(f'{shuffled_data}/X_shuffled', X)
     np.save(f'{shuffled_data}/y_shuffled', y)
 
+
+    print(sum(sum(np.isnan(X))))
+    print(sum(sum(np.isnan(y))))
     return X,y

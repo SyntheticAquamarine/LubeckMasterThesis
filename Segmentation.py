@@ -10,7 +10,7 @@ def file_import():
 
     filepaths = []
 
-    for root, dirs, files in os.walk("./OriginalDataset", topdown=True):
+    for root, dirs, files in os.walk("C:/Users/janja/OneDrive/Pulpit/DaneMGR", topdown=True):
         for name in dirs:
             if (bool(re.findall('\d$', name)) == False):
                 Path = (root + '/' + name)
@@ -81,7 +81,7 @@ def file_processing(T, WindowSize, NumOfSensors):
         
         df_segmented = segmentation(df_local, WindowSize)
         
-        
+        print('df_segmented shape')
         print(df_segmented.shape)
         print(sum(sum(np.isnan(df_segmented))))
         

@@ -9,6 +9,7 @@ import os
 #global num_features
 #num_features = 10
 def feature_extraction(data, num_features):
+        print(sum(sum(np.isnan(data))))
         freq = 100
         mean_array = np.zeros((len(data),2), dtype = float)
         median_array = np.zeros((len(data),2), dtype = float)
@@ -72,7 +73,7 @@ def feature_extraction(data, num_features):
         features = np.zeros((len(data), num_features))        
 
         features = np.concatenate((mean_array, median_array, std_array, min_val_array, max_val_array, sum_val_array, kurtosis_array, skewness_array, fft_sums, fft_freqs), axis = 1)
-        
+        print(sum(sum(np.isnan(features))))
         return features
 
 
@@ -80,6 +81,7 @@ def feature_extraction(data, num_features):
 
 def extraction_function(segmented_dir, num_features):
     for filename in os.listdir(segmented_dir):
+        print(filename)
         if filename.endswith('_B.npy'):
             file_loaded = np.load(segmented_dir + filename)
             extracted = feature_extraction(file_loaded, num_features)
