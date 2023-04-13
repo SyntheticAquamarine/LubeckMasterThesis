@@ -6,11 +6,11 @@ import numpy as np
 import math
 
 
-def file_import():
+def file_import(MainPath):
 
     filepaths = []
 
-    for root, dirs, files in os.walk("C:/Users/janja/OneDrive/Pulpit/DaneMGR", topdown=True):
+    for root, dirs, files in os.walk(MainPath, topdown=True):
         for name in dirs:
             if (bool(re.findall('\d$', name)) == False):
                 Path = (root + '/' + name)
@@ -50,8 +50,8 @@ def segmentation(pd_data, window_size):
 
 
 
-def file_processing(T, WindowSize, NumOfSensors):
-    file_import()
+def file_processing(T, WindowSize, NumOfSensors, MainPath):
+    file_import(MainPath)
     #T = 'N' #500000 #'N' # describes which rows multiplied by n should be taken into the dataset #If chosen parameter is N the rows will not get dropped
     fields = ['Infinity|RESP.ONLY_ONE_IN_GROUP [OHM]', 'Infinity|SPO2.SPO2_PULSE [COUNTS]']
     #WindowSize = 100

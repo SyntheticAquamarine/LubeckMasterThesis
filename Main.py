@@ -11,7 +11,7 @@ from CVrfc import cvrfc
 from CVxgboost import cvxgboost
 from CVsvm import cvsvm
 
-
+MainPath = "C:/Users/janja/OneDrive/Pulpit/DaneMGR"
 extracted_dir = './CreatedFiles/Extracted_Features/'
 label_dir = './CreatedFiles/Labels/'
 merged_dir = './CreatedFiles/Entire_Set/'
@@ -37,12 +37,17 @@ while further_action == True:
         segmentation \n \
         feature_extraction \n \
         labeling \n \
-        merging \n*2')
+        merging \n \
+        shuffling \n \
+        feature_loop \n \
+        feature_selection \n \
+        classification \n \
+        cv_classification \n')
         step = input("Which step of the process do you want to use. Write the step with the '_' symbol instead of spaces         \n").lower()
         
         if (step == 'segmentation'):
             T = 'N' #500000 #'N' # describes which rows multiplied by n should be taken into the dataset #If chosen parameter is N the rows will not get dropped
-            file_processing(T, WindowSize, NumOfSensors)
+            file_processing(T, WindowSize, NumOfSensors, MainPath)
         if (step == 'feature_extraction'):
             extraction_function(segmented_dir, num_features)
         if (step == 'labeling'): 
@@ -53,7 +58,7 @@ while further_action == True:
             data_shuffler(merged_dir, shuffled_dir)    
         if (step == 'feature_loop'):
             feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_description_folder)
-        if (step == 'selection'):
+        if (step == 'feature_selection'):
             feature_selection(shuffled_dir, feature_names, selected_feature_folder)
         if (step == 'classification'):
             rfc()
