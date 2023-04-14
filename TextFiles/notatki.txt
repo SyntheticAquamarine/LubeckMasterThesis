@@ -70,3 +70,21 @@ subject dependent and independent classification
   kurtosis_array[i] = scipy.stats.kurtosis(data[i], axis=0)
 /home/marekjedrychowski/LubeckMasterThesis/FeatureExtraction.py:30: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
   skewness_array[i] = scipy.stats.skew(data[i], axis=0)
+
+
+
+
+
+
+
+
+
+Number of features selected: 16
+Traceback (most recent call last):
+  File "c:\Users\janja\LubeckMasterThesis\Main.py", line 61, in <module>
+    feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_description_folder)
+  File "c:\Users\janja\LubeckMasterThesis\FeatureSelection.py", line 86, in feature_elimination_loop
+    statistics = feature_elimination(i, shuffled_dir, feature_names)
+  File "c:\Users\janja\LubeckMasterThesis\FeatureSelection.py", line 41, in feature_elimination
+    names_selected_features.append(feature_names[i])
+IndexError: list index out of range

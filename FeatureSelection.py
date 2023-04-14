@@ -17,7 +17,7 @@ def feature_elimination(i, shuffled_dir, feature_names):
     #for i in range(n*2,0,-1):
     
     # Create the Random Forest classifier
-    rf = RandomForestClassifier()
+    rf = RandomForestClassifier(n_jobs = 6)
     
     # Perform feature selection using RFE
     rfe = RFE(estimator=rf, n_features_to_select = i, step=1)

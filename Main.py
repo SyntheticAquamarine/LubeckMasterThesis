@@ -11,7 +11,8 @@ from CVrfc import cvrfc
 from CVxgboost import cvxgboost
 from CVsvm import cvsvm
 
-MainPath = "/home/marekjedrychowski/DaneMGR" #ścieżka do folderu
+#MainPath = "/home/marekjedrychowski/DaneMGR" #ścieżka do folderu 
+MainPath = 'C:/Users/janja/LubeckMasterThesis/DaneMGR'
 extracted_dir = './CreatedFiles/Extracted_Features/'
 label_dir = './CreatedFiles/Labels/'
 merged_dir = './CreatedFiles/Entire_Set/'
