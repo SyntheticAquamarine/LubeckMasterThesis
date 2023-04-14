@@ -28,6 +28,15 @@ def feature_extraction(data, num_features):
                 sum_val_array[i] = np.sum(data[i], axis=0)/freq
                 kurtosis_array[i] = scipy.stats.kurtosis(data[i], axis=0)       
                 skewness_array[i] = scipy.stats.skew(data[i], axis=0)
+                
+                
+                for j in range(len(kurtosis_array[i])):
+                        if (np.isnan(kurtosis_array[i][j])):
+                                kurtosis_array[i][j] = 0
+                                
+                for j in range(len(skewness_array[i])):
+                        if (np.isnan(skewness_array[i][j])):
+                                skewness_array[i][j] = 0
 
 
         fft_sums = np.zeros((len(data), data.shape[2]), dtype = float)
@@ -73,7 +82,7 @@ def feature_extraction(data, num_features):
         features = np.zeros((len(data), num_features))        
 
         features = np.concatenate((mean_array, median_array, std_array, min_val_array, max_val_array, sum_val_array, kurtosis_array, skewness_array, fft_sums, fft_freqs), axis = 1)
-        print(sum(sum(np.isnan(features))))
+        print(sum(np.isnan(features)))
         return features
 
 

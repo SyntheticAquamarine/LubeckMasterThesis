@@ -56,3 +56,17 @@ Plot power spectrum!
 
 
 subject dependent and independent classification
+
+
+
+
+
+
+
+
+
+
+/home/marekjedrychowski/LubeckMasterThesis/FeatureExtraction.py:29: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+  kurtosis_array[i] = scipy.stats.kurtosis(data[i], axis=0)
+/home/marekjedrychowski/LubeckMasterThesis/FeatureExtraction.py:30: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+  skewness_array[i] = scipy.stats.skew(data[i], axis=0)
