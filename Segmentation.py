@@ -1,5 +1,5 @@
 import os
-import pandas as pd
+from pandas import read_csv
 import re
 from os import walk
 import numpy as np
@@ -63,7 +63,7 @@ def file_processing(T, WindowSize, NumOfSensors, MainPath):
     i = 1
     for path in fullPath:
         #print(path)
-        df_local = pd.read_csv(path, sep = ',', encoding = 'UTF-8', usecols=fields)
+        df_local = read_csv(path, sep = ',', encoding = 'UTF-8', usecols=fields)
         
         print(df_local.shape)
 

@@ -6,6 +6,7 @@ import os
 def labeling(data_dir):
     for filename in os.listdir(data_dir):
         
+        '''
         file_loaded = np.load(data_dir + filename)
         labels = np.zeros(file_loaded.shape[0])
         label_file = re.sub('(\.npy)','',filename)
@@ -40,4 +41,4 @@ def labeling(data_dir):
         else:
             print('Filename error')
             break
-        '''
+        
