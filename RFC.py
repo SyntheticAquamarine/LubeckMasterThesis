@@ -12,7 +12,7 @@ def rfc():
     y_train = np.load('./CreatedFiles/Selected_Features/y_train.npy')
     y_test = np.load('./CreatedFiles/Selected_Features/y_test.npy')
     # create the model
-    rfc = RandomForestClassifier()
+    rfc = RandomForestClassifier(n_jobs = -1)
 
     # fit the model to the training data
     rfc.fit(X_train, y_train)

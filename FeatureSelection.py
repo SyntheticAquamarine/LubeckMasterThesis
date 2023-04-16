@@ -17,7 +17,7 @@ def feature_elimination(i, shuffled_dir, feature_names):
     #for i in range(n*2,0,-1):
     
     # Create the Random Forest classifier
-    rf = RandomForestClassifier(n_jobs = 6)
+    rf = RandomForestClassifier(n_jobs = -1)
     
     # Perform feature selection using RFE
     rfe = RFE(estimator=rf, n_features_to_select = i, step=1)
@@ -37,8 +37,8 @@ def feature_elimination(i, shuffled_dir, feature_names):
     names_selected_features = []
 
 
-    for i in selected_features_indices:
-        names_selected_features.append(feature_names[i])
+    #for i in selected_features_indices:
+    #    names_selected_features.append(feature_names[i])
     
     
     print('Features selected: ')

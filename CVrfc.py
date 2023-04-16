@@ -16,7 +16,7 @@ def cvrfc(n_folds):
     kf = KFold(n_splits=n_folds, random_state=42, shuffle=True)
 
     # Define the RFC model
-    rfc = RandomForestClassifier()
+    rfc = RandomForestClassifier(n_jobs = -1)
 
     # Initialize a list to store the accuracy scores
     acc_scores_RFC = []
