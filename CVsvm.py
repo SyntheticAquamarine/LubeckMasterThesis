@@ -1,5 +1,5 @@
 from sklearn.model_selection import KFold
-from sklearn import svm
+from sklearn.svm import SVC
 from sklearn import metrics
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
 import matplotlib.pyplot as plt
@@ -7,16 +7,16 @@ import numpy as np
 
 
 def cvsvm(n_folds):
-    classification_folder = './CreatedFiles/With_Cross_Validation/'
+    classification_folder = './CreatedFiles/Classification/With_Cross_Validation/'
     X = np.load('./CreatedFiles/Selected_Features/X_selected.npy')
-    y = np.load('./CreatedFiles/Sele/cted_Features/y_selected.npy')
+    y = np.load('./CreatedFiles/Selected_Features/y_selected.npy')
 
     # Create an instance of the KFold class
     kf = KFold(n_splits=n_folds, random_state=42, shuffle=True)
 
 
     # Define the SVM model
-    SVM = svm.SVC(kernel='rbf', C=1, gamma='scale')
+    SVM = SVC(kernel='rbf', C=1, gamma='scale')
 
     # Initialize a list to store the accuracy scores
     acc_scores_SVC = []
@@ -44,6 +44,7 @@ def cvsvm(n_folds):
         recall_scores_SVC.append(recall)
 
     # Print the mean scores
+    print('SVM with cross validation')
     print("Mean accuracy:", np.mean(acc_scores_SVC))
     print("Mean precision:", np.mean(precision_scores_SVC))
     print("Mean recall:", np.mean(recall_scores_SVC))

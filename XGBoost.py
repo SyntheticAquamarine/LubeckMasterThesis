@@ -7,7 +7,7 @@ import xgboost as xgb
 
 def xgboost():
 
-    classification_folder = './CreatedFiles/Without_Cross_Validation/'
+    classification_folder = './CreatedFiles/Classification/Without_Cross_Validation/'
     X_train = np.load('./CreatedFiles/Selected_Features/X_train.npy')
     X_test = np.load('./CreatedFiles/Selected_Features/X_test.npy')
     y_train = np.load('./CreatedFiles/Selected_Features/y_train.npy')
@@ -22,6 +22,7 @@ def xgboost():
     y_pred = model.predict(X_test)
 
     # evaluate the model's performance
+    print('XGBoost without cross validation')
     acc = accuracy_score(y_test, y_pred)
     print("Accuracy: %.2f%%" % (acc * 100.0))
     precision = precision_score(y_test, y_pred)

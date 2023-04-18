@@ -8,9 +8,9 @@ import numpy as np
 
 def cvrfc(n_folds):
 
-    classification_folder = './CreatedFiles/With_Cross_Validation/'
+    classification_folder = './CreatedFiles/Classification/With_Cross_Validation/'
     X = np.load('./CreatedFiles/Selected_Features/X_selected.npy')
-    y = np.load('./CreatedFiles/Sele/cted_Features/y_selected.npy')
+    y = np.load('./CreatedFiles/Selected_Features/y_selected.npy')
     
     # Create an instance of the KFold class
     kf = KFold(n_splits=n_folds, random_state=42, shuffle=True)
@@ -44,6 +44,7 @@ def cvrfc(n_folds):
         recall_scores_RFC.append(recall)
 
     # Print the mean scores
+    print('Random Forest with cross validation')
     print("Mean accuracy:", np.mean(acc_scores_RFC))
     print("Mean precision:", np.mean(precision_scores_RFC))
     print("Mean recall:", np.mean(recall_scores_RFC))

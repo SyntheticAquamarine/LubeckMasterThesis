@@ -6,7 +6,7 @@ import numpy as np
 
 
 def rfc():
-    classification_folder = './CreatedFiles/Without_Cross_Validation/'
+    classification_folder = './CreatedFiles/Classification/Without_Cross_Validation/'
     X_train = np.load('./CreatedFiles/Selected_Features/X_train.npy')
     X_test = np.load('./CreatedFiles/Selected_Features/X_test.npy')
     y_train = np.load('./CreatedFiles/Selected_Features/y_train.npy')
@@ -20,7 +20,7 @@ def rfc():
     # make predictions on the test set
     rfc_prediction = rfc.predict(X_test)
 
-
+    print('Random Forest without cross validation')
     acc = accuracy_score(y_test, rfc_prediction)
     print("Accuracy: %.2f%%" % (acc * 100.0))
     precision = precision_score(y_test, rfc_prediction)

@@ -2,18 +2,18 @@ from sklearn import metrics
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import svm
+from sklearn.svm import SVC
 
 
 def svm():
     
-    classification_folder = './CreatedFiles/Without_Cross_Validation/'
+    classification_folder = './CreatedFiles/Classification/Without_Cross_Validation/'
     X_train = np.load('./CreatedFiles/Selected_Features/X_train.npy')
     X_test = np.load('./CreatedFiles/Selected_Features/X_test.npy')
     y_train = np.load('./CreatedFiles/Selected_Features/y_train.npy')
     y_test = np.load('./CreatedFiles/Selected_Features/y_test.npy')
     # create the model
-    clf = svm.SVC(kernel='rbf', C=1, gamma='scale')
+    clf = SVC(kernel='rbf', C=1, gamma='scale')
 
     # fit the model to the training data
     clf.fit(X_train, y_train)
@@ -22,6 +22,7 @@ def svm():
     y_pred = clf.predict(X_test)
 
     # evaluate the model's performance
+    print('SVM without cross validation')
     acc = accuracy_score(y_test, y_pred)
     print("Accuracy: %.2f%%" % (acc * 100.0))
     precision = precision_score(y_test, y_pred)
