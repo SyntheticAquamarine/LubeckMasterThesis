@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, mean_
 from sklearn.preprocessing import LabelEncoder
 
 
-def feature_elimination(i, shuffled_dir, feature_names):
+def feature_elimination(i, shuffled_dir):
     
     #for i in range(n*2,0,-1):
     
@@ -34,15 +34,15 @@ def feature_elimination(i, shuffled_dir, feature_names):
     print(selected_features_indices)
     print('Number of features selected: %d' % (i))
     
-    names_selected_features = []
+    #names_selected_features = []
 
 
     #for i in selected_features_indices:
     #    names_selected_features.append(feature_names[i])
     
     
-    print('Features selected: ')
-    print(names_selected_features)
+    #print('Features selected: ')
+    #print(names_selected_features)
     
     
     le = LabelEncoder()
@@ -72,17 +72,17 @@ def feature_elimination(i, shuffled_dir, feature_names):
     print("Recall: %.4f%%" % (recall * 100.0))
     print("Mean Absolute Error:", mae, end = '\n')
     
-    return X_train, X_test, y_train, y_test, X_selected, y, accuracy_stat, precision_stat, recall_stat, names_selected_features, selected_features_indices
+    return X_train, X_test, y_train, y_test, X_selected, y, accuracy_stat, precision_stat, recall_stat, selected_features_indices
     
     
     
     
-def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_description_folder):
+def feature_elimination_loop(num_features, shuffled_dir, feature_names, feature_description_folder, NumOfSensors):
 
     with open(feature_description_folder, 'w') as f:
         pass
     
-    for i in range(num_features*2,0,-1):
+    for i in range(num_features* NumOfSensors,0,-1):
         statistics = feature_elimination(i, shuffled_dir, feature_names)
         
         with open(feature_description_folder,'a') as f:

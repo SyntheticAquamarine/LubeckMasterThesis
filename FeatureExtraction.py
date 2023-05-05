@@ -8,17 +8,17 @@ import os
 
 #global num_features
 #num_features = 10
-def feature_extraction(data, num_features):
+def feature_extraction(data, num_features, num_sensors):
         print(sum(sum(np.isnan(data))))
         freq = 100
-        mean_array = np.zeros((len(data),2), dtype = float)
-        median_array = np.zeros((len(data),2), dtype = float)
-        std_array = np.zeros((len(data),2), dtype = float)
-        min_val_array = np.zeros((len(data),2), dtype = float)
-        max_val_array = np.zeros((len(data),2), dtype = float)
-        sum_val_array = np.zeros((len(data),2), dtype = float)
-        kurtosis_array = np.zeros((len(data),2), dtype = float)
-        skewness_array = np.zeros((len(data),2), dtype = float)
+        mean_array = np.zeros((len(data),num_sensors), dtype = float)
+        median_array = np.zeros((len(data),num_sensors), dtype = float)
+        std_array = np.zeros((len(data),num_sensors), dtype = float)
+        min_val_array = np.zeros((len(data),num_sensors), dtype = float)
+        max_val_array = np.zeros((len(data),num_sensors), dtype = float)
+        sum_val_array = np.zeros((len(data),num_sensors), dtype = float)
+        kurtosis_array = np.zeros((len(data),num_sensors), dtype = float)
+        skewness_array = np.zeros((len(data),num_sensors), dtype = float)
         for i in range(len(data)):
                 mean_array[i] = np.mean(data[i], axis=0)
                 median_array[i] = np.median(data[i], axis=0)
@@ -88,18 +88,18 @@ def feature_extraction(data, num_features):
 
 #segmented_dir = './CreatedFiles/Segmentation/'
 
-def extraction_function(segmented_dir, num_features):
+def extraction_function(segmented_dir, num_features, num_sensors):
     for filename in os.listdir(segmented_dir):
         print(filename)
         if filename.endswith('_B.npy'):
             file_loaded = np.load(segmented_dir + filename)
-            extracted = feature_extraction(file_loaded, num_features)
+            extracted = feature_extraction(file_loaded, num_features, num_sensors)
             
             location_FE_B = f'./CreatedFiles/Extracted_Features/{filename}'
             np.save(location_FE_B, extracted)
         elif filename.endswith('_R.npy'):
             file_loaded = np.load(segmented_dir + filename)
-            extracted = feature_extraction(file_loaded, num_features)
+            extracted = feature_extraction(file_loaded, num_features, num_sensors)
             
             location_FE_R = f'./CreatedFiles/Extracted_Features/{filename}'
             np.save(location_FE_R, extracted)

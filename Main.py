@@ -23,7 +23,7 @@ feature_names = ['mean', 'mean_2', 'median', 'median_2', 'std', 'std_2', 'min_va
 feature_description_folder = './CreatedFiles/Feature_Description/features.txt' #descriptions of each number of features
 selected_feature_folder = './CreatedFiles/Selected_Features/'
 WindowSize = 500    #Windows size for segmentation
-NumOfSensors = 2 #number of sensor
+NumOfSensors = 8 #number of sensor
 num_features = 10 #number of features for each sensor
 num_of_folds = 5 #number of folds for cross validation
 
@@ -48,9 +48,9 @@ while further_action == True:
         
         if (step == 'segmentation'):
             T = 'N' #500000 #'N' # describes which rows multiplied by n should be taken into the dataset #If chosen parameter is N the rows will not get dropped
-            file_processing(T, WindowSize, NumOfSensors, MainPath)
+            file_processing(T, WindowSize, MainPath)
         if (step == 'feature_extraction'):
-            extraction_function(segmented_dir, num_features)
+            extraction_function(segmented_dir, num_features, NumOfSensors)
         if (step == 'labeling'): 
             labeling(extracted_dir)
         if (step == 'merging'):
